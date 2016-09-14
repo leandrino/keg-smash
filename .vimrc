@@ -124,15 +124,54 @@ call vundle#begin()
   
   " Themes
   Plugin 'dracula/vim'
+  Plugin 'itchyny/lightline.vim'
+  Plugin 'NLKNguyen/papercolor-theme'
 
-  " Surround and Emmet Vim
+  " Visual config
+  Plugin 'nathanaelkane/vim-indent-guides' 
+
+  " Sytaxe and completes
   Plugin 'tpope/vim-surround'
   Plugin 'mattn/emmet-vim'
+  Plugin 'shougo/neocomplcache.vim'
+  Plugin 'shougo/neosnippet'
+  Plugin 'shougo/neosnippet-snippets'
+  Plugin 'digitaltoad/vim-pug'
+  Bundle 'lepture/vim-css'
+  Plugin 'wavded/vim-stylus'
+  Plugin 'pangloss/vim-javascript'
+  Plugin 'neovimhaskell/haskell-vim'
+  Plugin 'elzr/vim-json'
+  Plugin 'fatih/vim-go'
+  Plugin 'godlygeek/tabular'
+  Plugin 'plasticboy/vim-markdown'
+	Plugin 'mxw/vim-jsx'
+	Plugin 'evanmiller/nginx-vim-syntax'
 
-  " Tools
+	" Tools
   Bundle 'wakatime/vim-wakatime'
   Plugin 'editorconfig/editorconfig-vim' 
 
 call vundle#end()                 " required
 filetype plugin indent on         " required
 
+" Color Config
+
+set t_Co=256
+
+set background=dark
+colorscheme PaperColor
+set ts=2 sw=2 noet								" indent guide
+
+" Enable `neocomplcache` by default
+" https://github.com/Shougo/neocomplcache.vim#installation
+
+let g:neocomplcache_enable_at_startup=1
+let g:neocomplete#enable_fuzzy_completion=1
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+	    let g:neocomplete#force_omni_input_patterns = {}
+		endif
+		let g:neocomplete#force_omni_input_patterns.python =
+		    \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import
+				\)\w*'
