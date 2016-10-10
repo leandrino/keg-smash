@@ -46,10 +46,11 @@ set lazyredraw				            " Do not redraw the screen while
 					                        " and other commands that have
 					                        " not been typed
 
-set listchars=tab:▸\	        		" ┐
+set listchars=tab:··	        		" ┐
 set listchars+=trail:·         		" │ Use custom symbols to
 set listchars+=eol:↴          		" │ represent invisible characters
 set listchars+=nbsp:_          		" ┘
+set list
 
 set magic				                  " Enable extended regexp
 set mousehide				              " Hide mouse pointer while typing
