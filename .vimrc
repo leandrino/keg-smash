@@ -1,178 +1,133 @@
-set nocompatible 			            " be iMproved, required
+set nocompatible
 
-syntax on 				                " Enable syntax highlighting
+syntax on
 
-if has('autocmd')
+if has ('autocmd')
   filetype plugin indent on
 endif
 
-set autoindent				            " Copy indent to the new line
-
-set backspace=indent
-set backspace+=eol
-set backspace+=start
-
-set backupdir=~/.vim/backup 		  " Set directory for backup files
-
-set backupskip=/tmp/*			        " ┐ Don't create backups
-set backupskip+=/private/tmp/*		" ┘ for certain files
-
-set clipboard=unnamed
-
-if has('unnamedplus')
-  set clipboard+=unnamedplus
-endif
-
-set cpoptions+=$		            	" When making a change, don't
-					                        " redisplay the line, and instead,
-					                        " put a '$' sign at the end of
-					                        " the changed text
-
-set colorcolumn=80			          " highlight certain column(s)
-set cursorline				            " highlight the current line
-set directory=~/.vim/swaps		    " Set directory for swap files
-set encoding=utf-8 nobomb 		    " Use UTF-8 without BOM
-set history=5000			            " Increase command line history
-set hlsearch				              " Enable search hightlighting
-set ignorecase				            " Ignore case in search patterns
-
-set incsearch				              " Highlight search pattern as
-					                        " it is being typed
-
-set laststatus=2			            " Always show the status line
-
-set lazyredraw				            " Do not redraw the screen while
-					                        " executing macros, registers
-					                        " and other commands that have
-					                        " not been typed
-
-set listchars=tab:··	        		" ┐
-set listchars+=trail:·         		" │ Use custom symbols to
-set listchars+=eol:↴          		" │ represent invisible characters
-set listchars+=nbsp:_          		" ┘
-set list
-
-set magic				                  " Enable extended regexp
-set mousehide				              " Hide mouse pointer while typing
-set noerrorbells			            " Disable error bells
-
-set nojoinspaces			            " When using the join command,
-				            	            " only insert a single space
-					                        " after a '.', '?', or '!'
-
-set nostartofline			            " Kept the cursos on the same column
-set number	    			            " Show line number
-
-set numberwidth=5			            " Increase the minimal number of
-            					            " columns used for the line number
-
-set report=0 				              " Report the number of lines changed
-set ruler				                  " Show cursor position
-
-set scrolloff=5				            " When scrolling, keep the cursor
-					                        " 5 lines below th top and 5 lines
-					                        " above the bottom of the screen
-
-set shortmess=aAItW			          " Avoid all th hit-enter prompts
-set showcmd				                " Show the command being typed
-set showmode				              " Show current mode
-set spelllang=en_us			          " Set the spellchecking language
-
-set smartcase 				            " Override 'ignorecase' option
-					                        " if the search pattern contains
-					                        " uppercase charcters
-
-set synmaxcol=2500			          " Limit syntas higlighting (this
-					                        " avoids the very slow redrawing
-					                        " when files contain long lines)
+" SPACES
 
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
 
-set ttyfast                       " Enable fast terminal connection
-set undodir=~/.vim/undos          " Set directory for undo files
-set undofile                      " Automatically save undo history
-"set virtualedit=all              " Allow cursor to be anywhere
+set listchars+=tab:··
+set listchars+=trail:·
+set listchars+=space:·
+set listchars+=eol:↴
+set listchars+=nbsp:_
 
-set visualbell                    " ┐
-set noerrorbells                  " │ Disable beeping and window flashing
-set t_vb=                         " ┘ https://vim.wikia.com/wiki/Disable_beeping
+set list
 
-set wildmenu                      " Enable enhanced command-line
-                                  " completion (by hitting <TAB> in
-                                  " command mode, Vim will show the
-                                  " possible matches just above the
-                                  " command line with the first
-                                  " match highlighted)
+" UI CONFIG
 
-set winminheight=0                " Allow windows to be squashed
+set autoindent
+set backspace=indent
+set backspace+=eol
+set backspace+=start
+set number
+set showcmd
+set cursorline
+set wildmenu
+set showmatch
+set colorcolumn=80
+autocmd VimResized * if (&columns > 80) | set columns=80 | endif
+set wrap
+set linebreak
+set showbreak=+++
 
-" ---------------------------------------------------------------
+" SEARCHING
 
-" Vundle Plugins
+set incsearch
+set hlsearch
 
-" ---------------------------------------------------------------
-filetype off 				              " required
+" FOLDING
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set foldenable
+set foldlevelstart=10
+
+" BACKUP CONFIG
+
+set backupdir=~/.vim/backup
+set backupskip=/tmp/*
+set backupskip+=/private/tmp/*
+set directory=~/.vim/swaps
+set undodir=~/.vim/undos
+
+" AUTOREAD
+set autoread
+au CursorHold * checktime
+
+" VIM PLUGINS
+
+filetype off
+set rtp +=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-  " Set required plugin
-  Plugin 'VundleVim/Vundle.vim'
-  
-  " Themes
-  Plugin 'dracula/vim'
-  Plugin 'itchyny/lightline.vim'
+  Plugin 'vundlevim/vundle.vim'
   Plugin 'NLKNguyen/papercolor-theme'
-
-  " Visual config
-  Plugin 'nathanaelkane/vim-indent-guides' 
-
-  " Sytaxe and completes
-  Plugin 'tpope/vim-surround'
-  Plugin 'mattn/emmet-vim'
+  Plugin 'altercation/vim-colors-solarized'
+  Plugin 'editorconfig/editorconfig-vim' 
+  Plugin 'scrooloose/nerdtree'
+  Plugin 'itchyny/lightline.vim'
+  "Syntax
   Plugin 'shougo/neocomplcache.vim'
   Plugin 'shougo/neosnippet'
   Plugin 'shougo/neosnippet-snippets'
   Plugin 'digitaltoad/vim-pug'
   Bundle 'lepture/vim-css'
   Plugin 'wavded/vim-stylus'
-  Plugin 'pangloss/vim-javascript'
   Plugin 'neovimhaskell/haskell-vim'
   Plugin 'elzr/vim-json'
   Plugin 'fatih/vim-go'
   Plugin 'godlygeek/tabular'
   Plugin 'plasticboy/vim-markdown'
-	Plugin 'mxw/vim-jsx'
-	Plugin 'evanmiller/nginx-vim-syntax'
+  Plugin 'mxw/vim-jsx'
+  Plugin 'evanmiller/nginx-vim-syntax'
+  Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+  Plugin 'pangloss/vim-javascript'
+  " Tools
+  Plugin 'tpope/vim-surround'
+  Plugin 'mattn/emmet-vim'
+  Plugin 'airblade/vim-gitgutter'
+  Plugin 'tpope/vim-fugitive' 
+  Plugin 'tpope/vim-repeat'
 
-	" Tools
-  Bundle 'wakatime/vim-wakatime'
-  Plugin 'editorconfig/editorconfig-vim' 
+call vundle#end()
+filetype plugin indent on
 
-call vundle#end()                 " required
-filetype plugin indent on         " required
-
-" Color Config
-
+" CONFIG COLOR THEME
 set t_Co=256
-
+set laststatus=2
+syntax enable
 set background=dark
 colorscheme PaperColor
-set ts=2 sw=2 noet								" indent guide
 
+"NERD TREE CONFIG
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let NERDTreeShowHidden=1
+map <C-n> :NERDTreeToggle<CR>
+
+" NEOCOMPLETE CONFG
 " Enable `neocomplcache` by default
-" https://github.com/Shougo/neocomplcache.vim#installation
-
+" " https://github.com/Shougo/neocomplcache.vim#installation
+"
 let g:neocomplcache_enable_at_startup=1
 let g:neocomplete#enable_fuzzy_completion=1
 
 if !exists('g:neocomplete#force_omni_input_patterns')
-	    let g:neocomplete#force_omni_input_patterns = {}
-		endif
-		let g:neocomplete#force_omni_input_patterns.python =
-		    \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import
-				\)\w*'
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+
+let g:neocomplete#force_omni_input_patterns.python =
+  \'\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from
+  \|^\s*import
+  \)\w*'
+
+" GITGUTTER
+set updatetime=250
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
