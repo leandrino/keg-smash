@@ -6,7 +6,7 @@ a .vimrc file... in progress
 
 - create folders:
 ```bash
-mkdir backup && mkdir undos && mkdir bundle && mkdir swamp
+mkdir ~/.vim/backup && mkdir ~/.vim/undos && mkdir ~/.vim/bundle && mkdir ~/.vim/swaps
 ```
 
 - Install [vundle.vim](https://github.com/VundleVim/Vundle.vim)
