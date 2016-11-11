@@ -42,6 +42,7 @@ set showbreak=+++
 
 set incsearch
 set hlsearch
+set ignorecase
 
 " FOLDING
 
@@ -67,17 +68,18 @@ set rtp +=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
   Plugin 'vundlevim/vundle.vim'
-  Plugin 'NLKNguyen/papercolor-theme'
-  Plugin 'altercation/vim-colors-solarized'
   Plugin 'editorconfig/editorconfig-vim' 
   Plugin 'scrooloose/nerdtree'
   Plugin 'itchyny/lightline.vim'
+  Plugin 'alessandroyorba/despacio'
+  Plugin 'alessandroyorba/sierra'
+  Plugin 'KeitaNakamura/neodark.vim'
   "Syntax
   Plugin 'shougo/neocomplcache.vim'
   Plugin 'shougo/neosnippet'
   Plugin 'shougo/neosnippet-snippets'
   Plugin 'digitaltoad/vim-pug'
-  Bundle 'lepture/vim-css'
+  Plugin 'JulesWang/css.vim'
   Plugin 'wavded/vim-stylus'
   Plugin 'neovimhaskell/haskell-vim'
   Plugin 'elzr/vim-json'
@@ -88,6 +90,8 @@ call vundle#begin()
   Plugin 'evanmiller/nginx-vim-syntax'
   Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
   Plugin 'pangloss/vim-javascript'
+  Plugin 'cakebaker/scss-syntax.vim'
+  Plugin 'othree/html5.vim'
   " Tools
   Plugin 'tpope/vim-surround'
   Plugin 'mattn/emmet-vim'
@@ -99,11 +103,16 @@ call vundle#end()
 filetype plugin indent on
 
 " CONFIG COLOR THEME
-set t_Co=256
+"set term=screen-256color
+set termguicolors
 set laststatus=2
 syntax enable
-set background=dark
-colorscheme PaperColor
+"set background=dark
+"colorscheme despacio
+"colorscheme sierra
+colorscheme neodark
+let g:lightline = {}
+let g:lightline.colorscheme = 'neodark'
 
 "NERD TREE CONFIG
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -113,7 +122,7 @@ map <C-n> :NERDTreeToggle<CR>
 
 " NEOCOMPLETE CONFG
 " Enable `neocomplcache` by default
-" " https://github.com/Shougo/neocomplcache.vim#installation
+" https://github.com/Shougo/neocomplcache.vim#installation
 "
 let g:neocomplcache_enable_at_startup=1
 let g:neocomplete#enable_fuzzy_completion=1
