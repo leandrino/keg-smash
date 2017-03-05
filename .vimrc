@@ -8,14 +8,17 @@ endif
 
 " SPACES
 
+"set noexpandtab
+"set copyindent
+"set preserveindent
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set expandtab
+set expandtab "replate tab to space
 
-set listchars+=tab:··
+set listchars+=tab:▸\
 set listchars+=trail:·
-set listchars+=space:·
+"set listchars+=space:·"Hidden space character
 set listchars+=eol:↴
 set listchars+=nbsp:_
 
@@ -68,13 +71,14 @@ set rtp +=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
   Plugin 'vundlevim/vundle.vim'
-  Plugin 'editorconfig/editorconfig-vim' 
+  Plugin 'editorconfig/editorconfig-vim'
   Plugin 'scrooloose/nerdtree'
-  Plugin 'itchyny/lightline.vim'
-  Plugin 'alessandroyorba/despacio'
-  Plugin 'alessandroyorba/sierra'
-  Plugin 'KeitaNakamura/neodark.vim'
+  "Plugin 'itchyny/lightline.vim'
+  Plugin 'arcticicestudio/nord-vim'
+  Plugin 'vim-airline/vim-airline'
+  Plugin 'vim-airline/vim-airline-themes'
   "Syntax
+  Plugin 'vim-syntastic/syntastic'
   Plugin 'shougo/neocomplcache.vim'
   Plugin 'shougo/neosnippet'
   Plugin 'shougo/neosnippet-snippets'
@@ -92,27 +96,33 @@ call vundle#begin()
   Plugin 'pangloss/vim-javascript'
   Plugin 'cakebaker/scss-syntax.vim'
   Plugin 'othree/html5.vim'
+  Plugin 'jiangmiao/auto-pairs'
   " Tools
-  Plugin 'tpope/vim-surround'
   Plugin 'mattn/emmet-vim'
   Plugin 'airblade/vim-gitgutter'
-  Plugin 'tpope/vim-fugitive' 
+  Plugin 'tpope/vim-surround'
+  Plugin 'tpope/vim-fugitive'
   Plugin 'tpope/vim-repeat'
-
+  Plugin 'tpope/vim-commentary'
 call vundle#end()
 filetype plugin indent on
 
-" CONFIG COLOR THEME
+" CONFIG COLOR THEME AND FONT
 "set term=screen-256color
 set termguicolors
 set laststatus=2
 syntax enable
-"set background=dark
-"colorscheme despacio
-"colorscheme sierra
-colorscheme neodark
-let g:lightline = {}
-let g:lightline.colorscheme = 'neodark'
+set background=light
+colorscheme nord
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_theme='nord'
+" let g:lightline = {}
+" let g:lightline.colorscheme ='nord'
+set macligatures " only macvim
+set guifont=Fira\ Code:h12
 
 "NERD TREE CONFIG
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -140,3 +150,13 @@ let g:neocomplete#force_omni_input_patterns.python =
 set updatetime=250
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
+
+" SYNTASTIC
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
