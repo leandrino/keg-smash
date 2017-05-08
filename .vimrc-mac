@@ -113,10 +113,14 @@ let g:gruvbox_italic=1
 colorscheme gruvbox
 
 " AIRLINE
+function ALE() abort
+  return exists('*ALEGetStatusLine') ? ALEGetStatusLine() : ''
+endfunction
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_section_error = '%{ALE()}'
 let g:airline_theme='gruvbox'
 
 " LIGATURES
@@ -152,5 +156,4 @@ nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 
 " ALE SYNTAXE
-set statusline+=%{ALEGetStatusLine()}
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
