@@ -27,13 +27,12 @@ set autoindent
 set backspace=indent
 set backspace+=eol
 set backspace+=start
-set number
-set showcmd
+
 set cursorline
 set wildmenu
 set showmatch
 set colorcolumn=80
-autocmd VimResized * if (&columns > 80) | set columns=80 | endif
+" autocmd VimResized * if (&columns > 80) | set columns=80 | endif
 set wrap
 set linebreak
 set showbreak=▸▸▸
@@ -71,6 +70,8 @@ call vundle#begin()
   Plugin 'scrooloose/nerdtree'
   Plugin 'arcticicestudio/nord-vim'
   Plugin 'morhetz/gruvbox'
+  Plugin 'dracula/vim'
+  Plugin 'joshdick/onedark.vim'
   Plugin 'vim-airline/vim-airline'
   "Syntax
   Plugin 'w0rp/ale'
@@ -99,34 +100,41 @@ call vundle#begin()
   Plugin 'tpope/vim-fugitive'
   Plugin 'tpope/vim-repeat'
   Plugin 'tpope/vim-commentary'
+  Plugin 'mattn/webapi-vim'
+  Plugin 'mattn/gist-vim'
 call vundle#end()
 filetype plugin indent on
 
 " CONFIG COLOR THEME AND FONT
-" set term=screen-256color
+"set term=screen-256color
 set termguicolors
 set laststatus=2
 syntax enable
 set background=dark
-let g:gruvbox_contrast_dark='medium'
-let g:gruvbox_italic=1
-colorscheme gruvbox
+" let g:gruvbox_contrast_light='medium'
+" let g:gruvbox_italic=0
+colorscheme onedark
 
-" AIRLINE
+" ALE SYNTAXE
 function ALE() abort
   return exists('*ALEGetStatusLine') ? ALEGetStatusLine() : ''
 endfunction
+set statusline+=%{ALE()}
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+
+" CENTER CURSOR ON VIM 
+set scrolloff=999
+
+" AIRLINE
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|s'
 let g:airline_section_error = '%{ALE()}'
-let g:airline_theme='gruvbox'
-
-" LIGATURES
-set macligatures
-set guifont=Fira\ Code:h12
-hi Normal ctermbg=none
+let g:airline_theme='onedark'
 
 " JSX CONFI
 let g:jsx_ext_required = 0
@@ -155,5 +163,16 @@ set updatetime=250
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 
-" ALE SYNTAXE
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+
+" RELATIVE NUMBER
+function! NumberToggle()
+  if(&relativenumber)
+    set number
+    set nornu
+  else
+    set relativenumber
+    set nonu
+  endif
+endfunc
+
+map <C-m> :call NumberToggle()<CR>
