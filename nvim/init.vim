@@ -1,8 +1,10 @@
 " PLUG
-call plug#begin('~/.local/share/nvim/plugged')
+  call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'itchyny/lightline.vim'
-Plug 'dracula/vim'
+  Plug 'itchyny/lightline.vim'
+  Plug 'dracula/vim'
+  Plug 'rakr/vim-one'
+  Plug 'wakatime/vim-wakatime'
 
 call plug#end()
 
@@ -32,7 +34,7 @@ set cursorline
 set relativenumber
 set noshowmode
 set background=dark
-colorscheme dracula 
+colorscheme dracula
 
 " SEARCHING
 set incsearch
@@ -44,6 +46,6 @@ set laststatus=2
 let g:lightline = {}
 let g:lightline.colorscheme = 'Dracula'
 
-" TRUE COLOR
+" TRUECOLOR
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
