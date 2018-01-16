@@ -1,153 +1,75 @@
-set nocompatible
+" PLUG
+  call plug#begin('~/.local/share/nvim/plugged')
 
+  Plug 'itchyny/lightline.vim'
+  Plug 'dracula/vim'
+  Plug 'arcticicestudio/nord-vim'
+  Plug 'rakr/vim-one'
+  Plug 'wakatime/vim-wakatime'
+  Plug 'mattn/emmet-vim'
+  Plug 'tpope/vim-commentary'
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'tpope/vim-fugitive'
+  Plug 'mhinz/vim-signify'
+  Plug 'w0rp/ale'
+
+" Syntax
+  Plug 'leafgarland/typescript-vim'
+  Plug 'pangloss/vim-javascript'
+  Plug 'mxw/vim-jsx'
+
+call plug#end()
+
+set nocompatible
 syntax on
 
-if has ('autocmd')
-  filetype plugin indent on
-endif
-
-" SPACES
-
+" INDENT
 "set noexpandtab
 "set copyindent
 "set preserveindent
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set expandtab "replate tab to space
+set expandtab " replace tab to space
 
-set listchars+=tab:▸\
+" WHITESPACES
+set listchars+=tab:▸\ 
 set listchars+=trail:·
 "set listchars+=space:·"Hidden space character
 set listchars+=eol:↴
 set listchars+=nbsp:_
-
 set list
 
 " UI CONFIG
-
-set autoindent
-set backspace=indent
-set backspace+=eol
-set backspace+=start
-set number
-set showcmd
-set cursorline
-set wildmenu
-set showmatch
 set colorcolumn=80
-autocmd VimResized * if (&columns > 80) | set columns=80 | endif
-set wrap
-set linebreak
-set showbreak=+++
+set cursorline
+set relativenumber
+set noshowmode
+set background=dark
+colorscheme nord
 
 " SEARCHING
-
 set incsearch
 set hlsearch
 set ignorecase
 
-" FOLDING
-
-set foldenable
-set foldlevelstart=10
-
-" BACKUP CONFIG
-
-set backupdir=~/.vim/backup
-set backupskip=/tmp/*
-set backupskip+=/private/tmp/*
-set directory=~/.vim/swaps
-set undodir=~/.vim/undos
-
-" AUTOREAD
-set autoread
-au CursorHold * checktime
-
-" VIM PLUGINS
-
-filetype off
-set rtp +=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-  Plugin 'vundlevim/vundle.vim'
-  Plugin 'editorconfig/editorconfig-vim'
-  Plugin 'scrooloose/nerdtree'
-  "Plugin 'itchyny/lightline.vim'
-  Plugin 'arcticicestudio/nord-vim'
-  "Syntax
-  Plugin 'vim-syntastic/syntastic'
-  Plugin 'shougo/neocomplcache.vim'
-  Plugin 'shougo/neosnippet'
-  Plugin 'shougo/neosnippet-snippets'
-  Plugin 'digitaltoad/vim-pug'
-  Plugin 'JulesWang/css.vim'
-  Plugin 'wavded/vim-stylus'
-  Plugin 'neovimhaskell/haskell-vim'
-  Plugin 'elzr/vim-json'
-  Plugin 'fatih/vim-go'
-  Plugin 'godlygeek/tabular'
-  Plugin 'plasticboy/vim-markdown'
-  Plugin 'mxw/vim-jsx'
-  Plugin 'evanmiller/nginx-vim-syntax'
-  Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
-  Plugin 'pangloss/vim-javascript'
-  Plugin 'cakebaker/scss-syntax.vim'
-  Plugin 'othree/html5.vim'
-  Plugin 'jiangmiao/auto-pairs'
-  " Tools
-  Plugin 'mattn/emmet-vim'
-  Plugin 'airblade/vim-gitgutter'
-  Plugin 'tpope/vim-surround'
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'tpope/vim-repeat'
-  Plugin 'tpope/vim-commentary'
-call vundle#end()
-filetype plugin indent on
-
-" CONFIG COLOR THEME AND FONT
-"set term=screen-256color
-set termguicolors
+" LIGHTLINE
 set laststatus=2
-syntax enable
-set background=light
-colorscheme nord
-" let g:lightline = {}
-" let g:lightline.colorscheme ='nord'
+let g:lightline = {}
+let g:lightline.colorscheme = 'nord'
 
-"NERD TREE CONFIG
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-let NERDTreeShowHidden=1
-map <C-n> :NERDTreeToggle<CR>
+" DEOPLETE
+let g:deoplete#enable_at_startup = 1
 
-" NEOCOMPLETE CONFG
-" Enable `neocomplcache` by default
-" https://github.com/Shougo/neocomplcache.vim#installation
-"
-let g:neocomplcache_enable_at_startup=1
-let g:neocomplete#enable_fuzzy_completion=1
+" FOLDING METHOD
+set foldmethod=manual
 
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
+" SYNTAX
+let g:javascript_plugin_flow = 1
+let g:jsx_ext_required = 0
 
-let g:neocomplete#force_omni_input_patterns.python =
-  \'\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from
-  \|^\s*import
-  \)\w*'
-
-" GITGUTTER
-set updatetime=250
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
-
-" SYNTASTIC
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" TRUECOLOR
+set termguicolors
