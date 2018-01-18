@@ -2,7 +2,7 @@
 
 a .vimrc file... in progress
 
-## Install VIM config##
+## Install VIM config
 
 - create folders:
 ```bash
@@ -13,7 +13,7 @@ mkdir ~/.vim/backup && mkdir ~/.vim/undos && mkdir ~/.vim/bundle && mkdir ~/.vim
 
 - Run :PluginInstall
 
-## Importants Links to HyperTerm ##
+## Importants Links to HyperTerm
 
 -[Awesome HyperTerm](https://github.com/bnb/awesome-hyper)
 -[Theme](https://github.com/pddstudio/hyper-nord)
