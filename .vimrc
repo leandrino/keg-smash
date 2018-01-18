@@ -71,5 +71,10 @@ set foldmethod=manual
 let g:javascript_plugin_flow = 1
 let g:jsx_ext_required = 0
 
+" LINT
+let g:ale_fixers = {
+\   'javascript': ['standard'],
+\}
+
 " TRUECOLOR
 set termguicolors
