@@ -1,6 +1,6 @@
 # Keg Smash
 
-a .vimrc file... in progress
+a dotfiles... in progress
 
 ## Install VIM config
 
@@ -9,11 +9,20 @@ a .vimrc file... in progress
 mkdir ~/.vim/backup && mkdir ~/.vim/undos && mkdir ~/.vim/bundle && mkdir ~/.vim/swaps
 ```
 
-- Install [vundle.vim](https://github.com/VundleVim/Vundle.vim)
+- Install [Plug](https://github.com/junegunn/vim-plug)
 
-- Run :PluginInstall
+- Run :PlugInstall
+
+## Install TMUX Package Manager
+
+- Install [TPM](https://github.com/tmux-plugins/tpm)
+
+## Install ZSH Package Manager
+
+- Install [Antigen](https://github.com/zsh-users/antigen)
 
 ## Importants Links to HyperTerm
+(It's cool, but I'm using Gnome-Terminal(on Fedora) or Iterm2(on Mac)
 
 -[Awesome HyperTerm](https://github.com/bnb/awesome-hyper)
 -[Theme](https://github.com/pddstudio/hyper-nord)
