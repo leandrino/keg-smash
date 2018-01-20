@@ -1,4 +1,3 @@
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -64,6 +63,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+export PATH=$PATH:/usr/share/dotnet
 
 # User configuration
 
@@ -112,12 +112,14 @@ antigen bundle pip
 antigen bundle lein
 antigen bundle command-not-found
 antigen bundle web-search
+antigen bundle docker
+antigen bundle zsh-users/zsh-autosuggestions
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-antigen theme robbyrussell
+antigen theme refined
 
 # Tell Antigen that you're done.
 antigen apply
