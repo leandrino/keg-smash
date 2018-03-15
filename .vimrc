@@ -2,21 +2,20 @@
   call plug#begin('~/.local/share/nvim/plugged')
 
   Plug 'itchyny/lightline.vim'
-  Plug 'dracula/vim'
-  Plug 'arcticicestudio/nord-vim'
   Plug 'rakr/vim-one'
+  Plug 'morhetz/gruvbox'
+  Plug 'dracula/vim'
   Plug 'wakatime/vim-wakatime'
   Plug 'mattn/emmet-vim'
   Plug 'tpope/vim-commentary'
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-fugitive'
   Plug 'mhinz/vim-signify'
   Plug 'w0rp/ale'
 
 " Syntax
+  Plug 'ElmCast/elm-vim'
+  Plug 'Valloric/YouCompleteMe'
   Plug 'leafgarland/typescript-vim'
   Plug 'pangloss/vim-javascript'
   Plug 'mxw/vim-jsx'
@@ -49,7 +48,7 @@ set cursorline
 set relativenumber
 set noshowmode
 set background=dark
-colorscheme nord
+colorscheme gruvbox
 
 " SEARCHING
 set incsearch
@@ -59,10 +58,7 @@ set ignorecase
 " LIGHTLINE
 set laststatus=2
 let g:lightline = {}
-let g:lightline.colorscheme = 'nord'
-
-" DEOPLETE
-let g:deoplete#enable_at_startup = 1
+let g:lightline.colorscheme = 'gruvbox'
 
 " FOLDING METHOD
 set foldmethod=manual
@@ -71,9 +67,14 @@ set foldmethod=manual
 let g:javascript_plugin_flow = 1
 let g:jsx_ext_required = 0
 
+" YCM
+let g:ycm_semantic_triggers = {
+     \ 'elm' : ['.'],
+     \}
+
 " LINT
 let g:ale_fixers = {
-\   'javascript': ['standard'],
+\   'javascript': ['semistandard'],
 \}
 
 " TRUECOLOR
