@@ -1,0 +1,69 @@
+
+set termguicolors
+call plug#begin('~/.local/share/nvim/plugged')
+
+  Plug 'Valloric/YouCompleteMe'
+  Plug 'itchyny/lightline.vim'
+  Plug 'arcticicestudio/nord-vim'
+  Plug 'tpope/vim-commentary'
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-surround'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'w0rp/ale'
+
+" LANGUAGES
+  Plug 'Quramy/tsuquyomi'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'pangloss/vim-javascript'
+  Plug 'mxw/vim-jsx'
+
+call plug#end()
+
+set nocompatible
+syntax on
+
+" WHITESPACES
+set listchars+=tab:▸\ 
+set listchars+=trail:·
+set listchars+=space:·
+set listchars+=eol:↴
+set listchars+=nbsp:_
+set list
+
+" UI CONFIG
+set colorcolumn=80
+set cursorline
+set relativenumber
+set scrolloff=99
+set number
+set noshowmode
+set background=dark
+colorscheme nord
+
+" SEARCHING
+set incsearch
+set hlsearch
+set ignorecase
+
+" LIGHTLINE
+set laststatus=2
+let g:lightline = {}
+let g:lightline.colorscheme = 'nord'
+
+" LINT
+let g:ale_fixers = {
+\   'javascript': ['prettier', 'eslint'],
+\   'typescript': ['prettier'],
+\   'css': ['prettier'],
+\}
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+" let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+
+" CLIPBOARD
+:set clipboard=unnamedplus
+
+" FOLDING
+" set foldmethod=syntax
