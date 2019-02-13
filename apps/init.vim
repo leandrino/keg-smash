@@ -1,7 +1,6 @@
 set termguicolors
 call plug#begin('~/.local/share/nvim/plugged')
 
-  Plug 'Valloric/YouCompleteMe'
   Plug 'itchyny/lightline.vim'
   Plug 'arcticicestudio/nord-vim'
   Plug 'tpope/vim-commentary'
@@ -12,6 +11,10 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'airblade/vim-gitgutter'
   Plug 'diepm/vim-rest-console'
   Plug 'w0rp/ale'
+  Plug 'roxma/nvim-yarp'
+  Plug 'ncm2/ncm2'
+  Plug 'ncm2/ncm2-bufword'
+  Plug 'ncm2/ncm2-path'
 
 " LANGUAGES
   Plug 'Quramy/tsuquyomi'
@@ -83,3 +86,11 @@ let g:ycm_add_preview_to_completeopt = 0
 " FOLDING
 " set foldmethod=syntax
 
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
+" NOTE: you need to install completion sources to get completions. Check
+" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
