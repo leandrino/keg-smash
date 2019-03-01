@@ -3,6 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   Plug 'itchyny/lightline.vim'
   Plug 'arcticicestudio/nord-vim'
+  Plug 'morhetz/gruvbox'
   Plug 'tpope/vim-commentary'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'tpope/vim-fugitive'
@@ -44,7 +45,7 @@ set scrolloff=99
 set number
 set noshowmode
 set background=dark
-colorscheme nord
+colorscheme gruvbox 
 
 " TABS
 set shiftwidth=2
@@ -59,7 +60,7 @@ set ignorecase
 " LIGHTLINE
 set laststatus=2
 let g:lightline = {}
-let g:lightline.colorscheme = 'nord'
+let g:lightline.colorscheme = 'gruvbox'
 
 " LINT
 let g:ale_fixers = {
