@@ -14,6 +14,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'w0rp/ale'
   Plug 'roxma/nvim-yarp'
   Plug 'Valloric/YouCompleteMe'
+  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " LANGUAGES
   Plug 'Quramy/tsuquyomi'
@@ -84,3 +85,11 @@ let g:ycm_add_preview_to_completeopt = 0
 
 " FOLDING
 " set foldmethod=syntax
+
+" NERD Tree
+autocmd vimenter * NERDTree
+
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+map <C-n> :NERDTreeToggle<CR>
